@@ -22,7 +22,7 @@ Centang dengan mengubah `[ ]` menjadi `[x]` setelah bagian itu selesai.
 - [x] Soal 5 — Editor transaksi peminjaman
 - [x] Soal 6 — Laporan buku yang masih tersedia
 - [x] Soal 7 — Laporan belum dikembalikan dan denda
-- [ ] Soal 8 — Rekap pinjaman per siswa
+- [x] Soal 8 — Rekap pinjaman per siswa
 - [ ] Cek akhir seluruh aplikasi
 
 ## Urutan kerja
@@ -244,9 +244,9 @@ Dari data awal:
 
 Siswa yang belum pernah pinjam tetap muncul dengan jumlah 0 (`LEFT JOIN`).
 
-- [ ] Setiap siswa muncul, termasuk yang jumlahnya 0.
-- [ ] Angka data awal cocok dengan tabel di atas.
-- [ ] Ada minimal satu `function` rekap `COUNT` per NIS.
+- [x] Setiap siswa muncul, termasuk yang jumlahnya 0.
+- [x] Angka data awal cocok dengan tabel di atas.
+- [x] Ada minimal satu `function` rekap `COUNT` per NIS.
 
 ## Definisi yang dikunci supaya laporan konsisten
 

@@ -128,3 +128,37 @@ function isiDendaPinjam($daftarPinjam, $tanggalHitung)
 
     return $hasil;
 }
+
+/**
+ * Hitung berapa kali setiap siswa meminjam buku.
+ *
+ * Semua status dihitung. Siswa yang belum pernah pinjam tetap muncul
+ * dengan jumlah 0 lewat LEFT JOIN. Satu query, COUNT di SQL.
+ *
+ * @param mysqli $koneksi Koneksi database perpustakaan.
+ * @return array|null Daftar NIS, NAMA, dan jumlah, atau null jika query gagal.
+ */
+function ambilRekapPinjamSiswa($koneksi)
+{
+    $sql = 'SELECT s.NIS, s.NAMA, COUNT(p.ID) AS jumlah '
+        . 'FROM TBL_SISWA s '
+        . 'LEFT JOIN TBL_PINJAM p ON p.NIS = s.NIS '
+        . 'GROUP BY s.NIS, s.NAMA '
+        . 'ORDER BY s.NIS';
+
+    $hasil = mysqli_query($koneksi, $sql);
+
+    if (!$hasil) {
+        return null;
+    }
+
+    $daftar = array();
+
+    while ($baris = mysqli_fetch_assoc($hasil)) {
+        $daftar[] = $baris;
+    }
+
+    mysqli_free_result($hasil);
+
+    return $daftar;
+}
