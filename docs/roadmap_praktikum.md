@@ -23,7 +23,7 @@ Centang dengan mengubah `[ ]` menjadi `[x]` setelah bagian itu selesai.
 - [x] Soal 6 — Laporan buku yang masih tersedia
 - [x] Soal 7 — Laporan belum dikembalikan dan denda
 - [x] Soal 8 — Rekap pinjaman per siswa
-- [ ] Cek akhir seluruh aplikasi
+- [x] Cek akhir seluruh aplikasi
 
 ## Urutan kerja
 
@@ -260,9 +260,9 @@ Siswa yang belum pernah pinjam tetap muncul dengan jumlah 0 (`LEFT JOIN`).
 
 ## Urutan cek akhir
 
-- [ ] Import SQL, hitung baris tiga tabel (7, 7, dan 7).
-- [ ] Tambah, ubah, hapus satu siswa dan satu buku, lalu kembalikan data soal jika perlu.
-- [ ] Tambah satu pinjaman: batas harus +7 hari, list menampilkan nama dan judul.
-- [ ] Laporan tersedia hanya buku yang tidak sedang keluar.
-- [ ] Laporan denda hanya menghitung pinjaman status 0 yang lewat batas.
-- [ ] Rekap per siswa cocok dengan tabel di fase 8 untuk data awal.
+- [x] Import SQL, hitung baris tiga tabel (7, 7, dan 7).
+- [x] Tambah, ubah, hapus satu siswa dan satu buku, lalu kembalikan data soal jika perlu.
+- [x] Tambah satu pinjaman: batas harus +7 hari, list menampilkan nama dan judul.
+- [x] Laporan tersedia hanya buku yang tidak sedang keluar.
+- [x] Laporan denda hanya menghitung pinjaman status 0 yang lewat batas.
+- [x] Rekap per siswa cocok dengan tabel di fase 8 untuk data awal.

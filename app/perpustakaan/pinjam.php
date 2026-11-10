@@ -178,6 +178,9 @@ function ambilOpsiBuku($koneksi)
  */
 function simpanPinjam($koneksi, $id, $tglPinjam, $tglBatas, $tglKembali, $status, $nis, $idBuku)
 {
+    // Angka di antara tanggal membuat kolom DATE tersimpan sebagai 0000-00-00.
+    $statusTeks = (string) $status;
+
     if ($tglKembali === null || $tglKembali === '') {
         $sql = 'INSERT INTO TBL_PINJAM (ID, TGL_PINJAM, TGL_BATAS, TGL_KEMBALI, STATUS, NIS, ID_BUKU) '
             . 'VALUES (?, ?, ?, NULL, ?, ?, ?)';
@@ -187,7 +190,7 @@ function simpanPinjam($koneksi, $id, $tglPinjam, $tglBatas, $tglKembali, $status
             return 'gagal';
         }
 
-        mysqli_stmt_bind_param($perintah, 'ssisss', $id, $tglPinjam, $tglBatas, $status, $nis, $idBuku);
+        mysqli_stmt_bind_param($perintah, 'ssssss', $id, $tglPinjam, $tglBatas, $statusTeks, $nis, $idBuku);
     } else {
         $sql = 'INSERT INTO TBL_PINJAM (ID, TGL_PINJAM, TGL_BATAS, TGL_KEMBALI, STATUS, NIS, ID_BUKU) '
             . 'VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -197,7 +200,7 @@ function simpanPinjam($koneksi, $id, $tglPinjam, $tglBatas, $tglKembali, $status
             return 'gagal';
         }
 
-        mysqli_stmt_bind_param($perintah, 'sssisss', $id, $tglPinjam, $tglBatas, $tglKembali, $status, $nis, $idBuku);
+        mysqli_stmt_bind_param($perintah, 'sssssss', $id, $tglPinjam, $tglBatas, $tglKembali, $statusTeks, $nis, $idBuku);
     }
 
     $berhasil = mysqli_stmt_execute($perintah);
@@ -236,6 +239,9 @@ function simpanPinjam($koneksi, $id, $tglPinjam, $tglBatas, $tglKembali, $status
  */
 function ubahPinjam($koneksi, $idLama, $id, $tglPinjam, $tglBatas, $tglKembali, $status, $nis, $idBuku)
 {
+    // Angka di antara tanggal membuat kolom DATE tersimpan sebagai 0000-00-00.
+    $statusTeks = (string) $status;
+
     if ($tglKembali === null || $tglKembali === '') {
         $sql = 'UPDATE TBL_PINJAM SET ID = ?, TGL_PINJAM = ?, TGL_BATAS = ?, TGL_KEMBALI = NULL, '
             . 'STATUS = ?, NIS = ?, ID_BUKU = ? WHERE ID = ?';
@@ -245,7 +251,7 @@ function ubahPinjam($koneksi, $idLama, $id, $tglPinjam, $tglBatas, $tglKembali, 
             return 'gagal';
         }
 
-        mysqli_stmt_bind_param($perintah, 'ssissss', $id, $tglPinjam, $tglBatas, $status, $nis, $idBuku, $idLama);
+        mysqli_stmt_bind_param($perintah, 'sssssss', $id, $tglPinjam, $tglBatas, $statusTeks, $nis, $idBuku, $idLama);
     } else {
         $sql = 'UPDATE TBL_PINJAM SET ID = ?, TGL_PINJAM = ?, TGL_BATAS = ?, TGL_KEMBALI = ?, '
             . 'STATUS = ?, NIS = ?, ID_BUKU = ? WHERE ID = ?';
@@ -255,7 +261,7 @@ function ubahPinjam($koneksi, $idLama, $id, $tglPinjam, $tglBatas, $tglKembali, 
             return 'gagal';
         }
 
-        mysqli_stmt_bind_param($perintah, 'ssssisss', $id, $tglPinjam, $tglBatas, $tglKembali, $status, $nis, $idBuku, $idLama);
+        mysqli_stmt_bind_param($perintah, 'ssssssss', $id, $tglPinjam, $tglBatas, $tglKembali, $statusTeks, $nis, $idBuku, $idLama);
     }
 
     $berhasil = mysqli_stmt_execute($perintah);
