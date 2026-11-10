@@ -31,27 +31,27 @@ git clone https://github.com/yuanthio/praktikum-perpustakaan.git Yuanthio_Virly
 
 Nama folder menjadi bagian URL. Kalau folder-nya bukan `Yuanthio_Virly`, sesuaikan alamat di browser.
 
-3. Impor kedua file SQL. Dari folder proyek:
+3. Impor database perpustakaan. Dari folder proyek:
 
 ```bash
 Get-Content -Raw sql\perpustakaan.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content -Raw sql\pinjaman_perusahaan.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
 ```
 
 Di mesin Linux atau macOS:
 
 ```bash
 mysql -u root < sql/perpustakaan.sql
-mysql -u root < sql/pinjaman_perusahaan.sql
 ```
 
-Bisa juga lewat phpMyAdmin. Pada soal ini alatnya ada di `http://localhost/xdba/`. XAMPP standar biasanya memakai `http://localhost/phpmyadmin/`.
+Bisa juga lewat phpMyAdmin. Pada komputer ini alatnya ada di `http://localhost/xdba/`. XAMPP standar biasanya memakai `http://localhost/phpmyadmin/`.
 
 4. Buka `http://localhost/Yuanthio_Virly/`.
 
-Kalau halaman menampilkan pesan koneksi gagal, pastikan MySQL hidup dan kedua database sudah terimpor. Kalau user atau kata sandi MySQL berbeda, ubah `DB_HOST`, `DB_USER`, dan `DB_PASS` di `config/koneksi.php`.
+Kalau halaman menampilkan pesan koneksi gagal, pastikan MySQL hidup dan `sql/perpustakaan.sql` sudah terimpor. Kalau user atau kata sandi MySQL berbeda, ubah `DB_HOST`, `DB_USER`, dan `DB_PASS` di `config/koneksi.php`.
 
-Impor ulang `sql/perpustakaan.sql` menghapus tabel perpustakaan lalu mengisinya lagi dengan data soal. Data yang ditambah lewat aplikasi akan hilang.
+Setelah aplikasi terbuka, `sql/pinjaman_perusahaan.sql` boleh diimpor sendiri sebagai rancangan pinjaman uang karyawan, terpisah dari database yang dipakai halaman.
+
+Impor ulang `sql/perpustakaan.sql` menghapus tabel perpustakaan lalu mengisinya lagi dengan data awal. Data yang ditambah lewat aplikasi akan hilang.
 
 ## Data awal
 
