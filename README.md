@@ -49,7 +49,7 @@ Bisa juga lewat phpMyAdmin. Pada soal ini alatnya ada di `http://localhost/xdba/
 
 4. Buka `http://localhost/Yuanthio_Virly/`.
 
-Halaman depan menampilkan status koneksi ke database `perpustakaan`. Kalau koneksi gagal, pastikan MySQL hidup dan kedua database sudah terimpor. Kalau user atau kata sandi MySQL berbeda, ubah `DB_HOST`, `DB_USER`, dan `DB_PASS` di `config/koneksi.php`.
+Kalau halaman menampilkan pesan koneksi gagal, pastikan MySQL hidup dan kedua database sudah terimpor. Kalau user atau kata sandi MySQL berbeda, ubah `DB_HOST`, `DB_USER`, dan `DB_PASS` di `config/koneksi.php`.
 
 Impor ulang `sql/perpustakaan.sql` menghapus tabel perpustakaan lalu mengisinya lagi dengan data soal. Data yang ditambah lewat aplikasi akan hilang.
 
