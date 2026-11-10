@@ -21,7 +21,7 @@ Centang dengan mengubah `[ ]` menjadi `[x]` setelah bagian itu selesai.
 - [x] Soal 4 — Editor data buku
 - [x] Soal 5 — Editor transaksi peminjaman
 - [x] Soal 6 — Laporan buku yang masih tersedia
-- [ ] Soal 7 — Laporan belum dikembalikan dan denda
+- [x] Soal 7 — Laporan belum dikembalikan dan denda
 - [ ] Soal 8 — Rekap pinjaman per siswa
 - [ ] Cek akhir seluruh aplikasi
 
@@ -221,10 +221,10 @@ Ketentuan denda:
 
 Contoh: batas 8 Nov 2010, hari hitung 10 Nov 2010, belum kembali → 2 hari × 5.000 = Rp10.000. Jika belum lewat batas, denda Rp0.
 
-- [ ] Laporan memuat peminjam, ID pinjam, batas akhir, dan denda.
-- [ ] Hanya baris status terpinjam (`0`) yang masuk.
-- [ ] Denda Rp5.000 per hari setelah lewat tanggal batas. Belum lewat batas = Rp0.
-- [ ] Ada minimal satu `function` hitung denda.
+- [x] Laporan memuat peminjam, ID pinjam, batas akhir, dan denda.
+- [x] Hanya baris status terpinjam (`0`) yang masuk.
+- [x] Denda Rp5.000 per hari setelah lewat tanggal batas. Belum lewat batas = Rp0.
+- [x] Ada minimal satu `function` hitung denda.
 
 ## Fase 8 — Soal 8: rekap per siswa
 
