@@ -25,6 +25,83 @@ function daftarBulanSingkat()
 }
 
 /**
+ * Nama bulan penuh untuk dropdown tanggal lahir.
+ *
+ * @return array Nomor bulan 1–12 ke nama bulan.
+ */
+function daftarBulanLengkap()
+{
+    return array(
+        1 => 'Januari',
+        2 => 'Februari',
+        3 => 'Maret',
+        4 => 'April',
+        5 => 'Mei',
+        6 => 'Juni',
+        7 => 'Juli',
+        8 => 'Agustus',
+        9 => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember',
+    );
+}
+
+/**
+ * Pilihan hari 1 sampai 31.
+ *
+ * @return array Daftar angka hari.
+ */
+function daftarHariLahir()
+{
+    $daftar = array();
+    $hari = 1;
+
+    while ($hari <= 31) {
+        $daftar[] = $hari;
+        $hari++;
+    }
+
+    return $daftar;
+}
+
+/**
+ * Pilihan tahun lahir yang mencakup data soal dan contoh dropdown 2010.
+ *
+ * @return array Daftar tahun dari 1970 sampai 2010.
+ */
+function daftarTahunLahir()
+{
+    $daftar = array();
+    $tahun = 1970;
+
+    while ($tahun <= 2010) {
+        $daftar[] = $tahun;
+        $tahun++;
+    }
+
+    return $daftar;
+}
+
+/**
+ * Pilihan tahun untuk tanggal pinjam dan kembali.
+ *
+ * @return array Daftar tahun dari 2000 sampai 2026.
+ */
+function daftarTahunPinjam()
+{
+    $daftar = array();
+    $tahun = 2000;
+
+    while ($tahun <= 2026) {
+        $daftar[] = $tahun;
+        $tahun++;
+    }
+
+    return $daftar;
+}
+
+/**
  * Ubah DATE MySQL menjadi tampilan soal.
  * Contoh: 1987-03-12 menjadi 12-Mar-1987. Nilai kosong tetap kosong.
  *

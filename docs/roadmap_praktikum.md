@@ -16,11 +16,11 @@ Centang dengan mengubah `[ ]` menjadi `[x]` setelah bagian itu selesai.
 
 - [x] Fase 0 — Persiapan koneksi dan menu
 - [x] Soal 1 — Rancangan data pinjaman perusahaan
-- [ ] Soal 2 — Tabel MySQL dan data awal
-- [ ] Soal 3 — Editor data siswa
-- [ ] Soal 4 — Editor data buku
-- [ ] Soal 5 — Editor transaksi peminjaman
-- [ ] Soal 6 — Laporan buku yang masih tersedia
+- [x] Soal 2 — Tabel MySQL dan data awal
+- [x] Soal 3 — Editor data siswa
+- [x] Soal 4 — Editor data buku
+- [x] Soal 5 — Editor transaksi peminjaman
+- [x] Soal 6 — Laporan buku yang masih tersedia
 - [ ] Soal 7 — Laporan belum dikembalikan dan denda
 - [ ] Soal 8 — Rekap pinjaman per siswa
 - [ ] Cek akhir seluruh aplikasi
@@ -61,6 +61,7 @@ Yuanthio_Virly/
     buku.php
     pinjam.php
     laporan.php
+    data_awal.php                 jumlah baris data awal
   app/pembiayaan/
     pinjaman.php                  laporan transfer, penarikan, pemakaian, cicilan
   view/perpustakaan/                HTML list, editor, dan laporan
@@ -137,11 +138,11 @@ Relasi:
 - `TBL_PINJAM.NIS` mengacu ke `TBL_SISWA.NIS`.
 - `TBL_PINJAM.ID_BUKU` mengacu ke `TBL_BUKU.ID`.
 
-- [ ] File `sql/perpustakaan.sql` berisi `CREATE` dan `INSERT` ketiga tabel.
-- [ ] `TBL_SISWA` terisi 7 baris sesuai soal.
-- [ ] `TBL_BUKU` terisi 7 baris sesuai soal.
-- [ ] `TBL_PINJAM` terisi 7 baris sesuai soal.
-- [ ] Relasi NIS dan ID buku sudah dipasang.
+- [x] File `sql/perpustakaan.sql` berisi `CREATE` dan `INSERT` ketiga tabel.
+- [x] `TBL_SISWA` terisi 7 baris sesuai soal.
+- [x] `TBL_BUKU` terisi 7 baris sesuai soal.
+- [x] `TBL_PINJAM` terisi 7 baris sesuai soal.
+- [x] Relasi NIS dan ID buku sudah dipasang.
 
 ## Fase 3 — Soal 3: editor siswa
 
@@ -151,13 +152,13 @@ Dua tampilan.
 
 **Editor:** NIS, nama, tanggal lahir (dropdown hari, bulan, tahun), jenis kelamin (dropdown), tombol OK, Close, Save.
 
-- [ ] Tampilan list sesuai kolom soal, termasuk format tanggal dan label kelamin.
-- [ ] Tombol ADD NEW membuka editor kosong.
-- [ ] Save pada data baru menyimpan baris siswa.
-- [ ] EDIT membuka editor terisi, Save mengubah baris itu.
-- [ ] DELETE menghapus siswa. Tolak hapus jika NIS masih dipakai di `TBL_PINJAM`.
-- [ ] OK menyimpan lalu kembali ke list. Close kembali ke list tanpa menyimpan.
-- [ ] Ada minimal satu `function` (ambil semua, ambil satu, simpan, ubah, hapus, format tanggal, label kelamin).
+- [x] Tampilan list sesuai kolom soal, termasuk format tanggal dan label kelamin.
+- [x] Tombol ADD NEW membuka editor kosong.
+- [x] Save pada data baru menyimpan baris siswa.
+- [x] EDIT membuka editor terisi, Save mengubah baris itu.
+- [x] DELETE menghapus siswa. Tolak hapus jika NIS masih dipakai di `TBL_PINJAM`.
+- [x] OK menyimpan lalu kembali ke list. Close kembali ke list tanpa menyimpan.
+- [x] Ada minimal satu `function` (ambil semua, ambil satu, simpan, ubah, hapus, format tanggal, label kelamin).
 
 ## Fase 4 — Soal 4: editor buku
 
@@ -167,9 +168,9 @@ Pola sama dengan siswa.
 
 **Editor:** ID, judul, ISBN, pengarang, tombol OK, Close, Save.
 
-- [ ] Tampilan list sesuai kolom soal.
-- [ ] ADD NEW, EDIT, DELETE, OK, Close, dan Save berjalan.
-- [ ] Ada minimal satu `function` (ambil semua, ambil satu, simpan, ubah, hapus).
+- [x] Tampilan list sesuai kolom soal.
+- [x] ADD NEW, EDIT, DELETE, OK, Close, dan Save berjalan.
+- [x] Ada minimal satu `function` (ambil semua, ambil satu, simpan, ubah, hapus).
 
 ## Fase 5 — Soal 5: editor peminjaman
 
@@ -192,12 +193,12 @@ Pola sama dengan siswa.
 - NIS: dropdown dari `TBL_SISWA`.
 - ID buku: dropdown dari `TBL_BUKU`.
 
-- [ ] List menampilkan nama siswa dan judul buku, status Terpinjam/Kembali, tanggal format `01-Nop-2010`.
-- [ ] Tanggal kembali kosong jika belum kembali.
-- [ ] Editor: tanggal pinjam dropdown, tanggal batas tampil otomatis (+7 hari).
-- [ ] Dropdown status, NIS, dan ID buku terisi dari data.
-- [ ] ADD NEW, EDIT, DELETE, OK, Close, dan Save berjalan.
-- [ ] Ada minimal satu `function` (list join, simpan, ubah, hapus, hitung tanggal batas).
+- [x] List menampilkan nama siswa dan judul buku, status Terpinjam/Kembali, tanggal format `01-Nop-2010`.
+- [x] Tanggal kembali kosong jika belum kembali.
+- [x] Editor: tanggal pinjam dropdown, tanggal batas tampil otomatis (+7 hari).
+- [x] Dropdown status, NIS, dan ID buku terisi dari data.
+- [x] ADD NEW, EDIT, DELETE, OK, Close, dan Save berjalan.
+- [x] Ada minimal satu `function` (list join, simpan, ubah, hapus, hitung tanggal batas).
 
 ## Fase 6 — Soal 6: buku yang masih tersedia
 
@@ -205,9 +206,9 @@ Laporan buku yang **tidak** sedang berstatus terpinjam (`STATUS = 0`).
 
 Dari data awal, yang sedang keluar: B007, B002, B006, B001, B004. Yang tersedia: **B003** dan **B005** (keduanya status kembali).
 
-- [ ] Laporan hanya menampilkan buku yang tidak sedang terpinjam.
-- [ ] Dengan data awal, yang muncul B003 dan B005.
-- [ ] Ada minimal satu `function` untuk query buku tersedia.
+- [x] Laporan hanya menampilkan buku yang tidak sedang terpinjam.
+- [x] Dengan data awal, yang muncul B003 dan B005.
+- [x] Ada minimal satu `function` untuk query buku tersedia.
 
 ## Fase 7 — Soal 7: belum dikembalikan dan denda
 
