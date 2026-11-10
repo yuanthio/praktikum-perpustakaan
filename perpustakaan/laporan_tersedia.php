@@ -10,7 +10,6 @@ $koneksi = bukaKoneksi();
 mulaiHalaman('Laporan Buku Tersedia', '56rem');
 
 if (!$koneksi) {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan('Koneksi database gagal. Pastikan MySQL berjalan.', true);
 } else {
     $daftarBuku = ambilBukuTersedia($koneksi);

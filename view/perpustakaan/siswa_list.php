@@ -10,7 +10,6 @@
  */
 function tulisDaftarSiswa($daftarSiswa, $pesan, $gagal)
 {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan($pesan, $gagal);
     echo '<table>';
     echo '<thead><tr><th>NIS</th><th>NAMA</th><th>TGL LAHIR</th><th>KELAMIN</th><th></th><th></th></tr></thead>';

@@ -22,7 +22,6 @@ function tulisLaporanBelumKembali($daftarPinjam, $tanggalHitung)
 {
     $tanggalLayar = formatTanggalTampil($tanggalHitung);
 
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     echo '<p>Buku berikut masih berstatus terpinjam. Denda dihitung pada <strong>'
         . teksAman($tanggalLayar)
         . '</strong>, sebesar '

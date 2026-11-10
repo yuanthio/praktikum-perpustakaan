@@ -10,7 +10,6 @@
  */
 function tulisDaftarPinjam($daftarPinjam, $pesan, $gagal)
 {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan($pesan, $gagal);
     echo '<table>';
     echo '<thead><tr><th>ID</th><th>PINJAM</th><th>BATAS</th><th>KEMBALI</th><th>STATUS</th><th>SISWA</th><th>BUKU</th><th></th><th></th></tr></thead>';

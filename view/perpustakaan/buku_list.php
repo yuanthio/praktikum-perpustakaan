@@ -10,7 +10,6 @@
  */
 function tulisDaftarBuku($daftarBuku, $pesan, $gagal)
 {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan($pesan, $gagal);
     echo '<table>';
     echo '<thead><tr><th>ID</th><th>JUDUL</th><th>ISBN</th><th>PENGARANG</th><th></th><th></th></tr></thead>';

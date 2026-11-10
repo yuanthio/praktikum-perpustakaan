@@ -8,7 +8,6 @@
  */
 function tulisLaporanBukuTersedia($daftarBuku)
 {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     echo '<p>Buku di bawah ini tidak sedang terpinjam, jadi masih bisa dipinjam.</p>';
 
     if ($daftarBuku === null) {

@@ -8,7 +8,6 @@
  */
 function tulisLaporanRekapSiswa($daftarRekap)
 {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     echo '<p>Jumlah ini menghitung setiap pinjaman, baik yang masih terpinjam maupun yang sudah kembali.</p>';
 
     if ($daftarRekap === null) {

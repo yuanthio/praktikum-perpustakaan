@@ -10,7 +10,6 @@ $koneksi = bukaKoneksi();
 mulaiHalaman('Rekap Pinjaman per Siswa', '48rem');
 
 if (!$koneksi) {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan('Koneksi database gagal. Pastikan MySQL berjalan.', true);
 } else {
     $daftarRekap = ambilRekapPinjamSiswa($koneksi);

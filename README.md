@@ -1,6 +1,6 @@
 # Praktikum Perpustakaan
 
-Aplikasi perpustakaan kecil untuk mencatat siswa, buku, dan peminjaman, plus tiga laporan. Rancangan pinjaman perusahaan disimpan terpisah dan tidak dicampur ke layar perpustakaan.
+Aplikasi perpustakaan kecil untuk mencatat siswa, buku, dan peminjaman, plus tiga laporan.
 
 Buka aplikasi di `http://localhost/Yuanthio_Virly/` setelah Apache dan MySQL berjalan.
 
@@ -8,7 +8,7 @@ Buka aplikasi di `http://localhost/Yuanthio_Virly/` setelah Apache dan MySQL ber
 
 - PHP prosedural, ditulis agar tetap jalan di PHP 5 sampai PHP 7. Tidak memakai framework atau ORM.
 - MySQL atau MariaDB lewat `mysqli`, satu koneksi per request, query memakai prepared statement saat ada input pengguna.
-- HTML dan CSS biasa, tanpa JavaScript framework. Tanggal batas di form peminjaman ikut berubah di browser, lalu dihitung ulang di server saat disimpan.
+- HTML dan satu stylesheet di `css/tampilan.css`, tanpa framework. Huruf isi memakai Source Serif 4, menu dan tombol memakai Source Sans 3, keduanya disimpan di `css/font/`. Tanggal batas di form peminjaman ikut berubah di browser, lalu dihitung ulang di server saat disimpan.
 - Database `utf8mb4`.
 
 ## Kebutuhan
@@ -63,11 +63,11 @@ Database `perpustakaan` berisi 7 siswa, 7 buku, dan 7 pinjaman.
 | `TBL_BUKU` | ID buku, judul, ISBN, pengarang |
 | `TBL_PINJAM` | tanggal pinjam, batas, kembali, status, NIS, ID buku |
 
-Database `pinjaman_perusahaan` dipakai rancangan soal pinjaman karyawan. Tidak ada menu untuk database itu.
+Database `pinjaman_perusahaan` adalah rancangan terpisah untuk pinjaman uang karyawan: setoran ke rekening, penarikan, pemakaian, dan cicilan. Query laporannya ada di `app/pembiayaan/`. Aplikasi perpustakaan tidak menampilkan database itu.
 
 ## Cara pakai
 
-Menu utama punya enam tautan.
+Navbar di atas halaman memuat Beranda, Siswa, Buku, Peminjaman, Buku Tersedia, Belum Kembali, dan Rekap.
 
 ### Data Siswa
 
@@ -133,9 +133,11 @@ Di database tanggal disimpan sebagai `DATE`, misalnya `2010-11-01`. Di layar dit
 ## Struktur folder
 
 ```text
-index.php                  menu
+index.php                  beranda
+css/tampilan.css           tampilan seluruh halaman
+css/font/                  Source Serif 4 dan Source Sans 3
 config/                    koneksi dan format tanggal
-includes/layout.php        kerangka halaman
+includes/layout.php        kerangka halaman dan navbar
 app/perpustakaan/          query dan hitungan, tanpa HTML
 app/pembiayaan/            query laporan pinjaman perusahaan
 view/perpustakaan/         HTML daftar, form, dan laporan

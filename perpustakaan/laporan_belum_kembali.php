@@ -12,7 +12,6 @@ $tanggalHitung = date('Y-m-d');
 mulaiHalaman('Laporan Belum Dikembalikan', '72rem');
 
 if (!$koneksi) {
-    echo '<p class="pengantar"><a href="../index.php">Menu</a></p>';
     tulisPesan('Koneksi database gagal. Pastikan MySQL berjalan.', true);
 } else {
     $daftarPinjam = ambilPinjamBelumKembali($koneksi);

@@ -1,15 +1,109 @@
 <?php
 
 /**
+ * Akar URL aplikasi, supaya CSS dan navbar sama dari beranda maupun modul.
+ *
+ * @return string Jalur seperti /Yuanthio_Virly, tanpa garis miring di akhir.
+ */
+function ambilAkarAplikasi()
+{
+    $skrip = '';
+
+    if (isset($_SERVER['SCRIPT_NAME'])) {
+        $skrip = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
+    }
+
+    $penanda = '/perpustakaan/';
+    $posisi = strpos($skrip, $penanda);
+
+    if ($posisi !== false) {
+        return substr($skrip, 0, $posisi);
+    }
+
+    $folder = str_replace('\\', '/', dirname($skrip));
+
+    if ($folder === '/' || $folder === '.' || $folder === '') {
+        return '';
+    }
+
+    return rtrim($folder, '/');
+}
+
+/**
+ * Kelas lebar lembar isi. Nilainya dipakai stylesheet, bukan style inline.
+ *
+ * @param string $lebar Lebar yang diminta halaman, misalnya 56rem.
+ * @return string Nama kelas CSS.
+ */
+function kelasLebarHalaman($lebar)
+{
+    if ($lebar === '72rem') {
+        return 'lembar-lebar';
+    }
+
+    if ($lebar === '56rem') {
+        return 'lembar-sedang';
+    }
+
+    if ($lebar === '48rem') {
+        return 'lembar-rapat';
+    }
+
+    return 'lembar-sempit';
+}
+
+/**
+ * Cetak navbar modul perpustakaan.
+ *
+ * @return void
+ */
+function tulisNavigasi()
+{
+    $akar = ambilAkarAplikasi();
+    $berkasAktif = '';
+
+    if (isset($_SERVER['SCRIPT_NAME'])) {
+        $berkasAktif = basename(str_replace('\\', '/', $_SERVER['SCRIPT_NAME']));
+    }
+
+    $menu = array(
+        array('berkas' => 'index.php', 'jalur' => '/index.php', 'label' => 'Beranda'),
+        array('berkas' => 'siswa.php', 'jalur' => '/perpustakaan/siswa.php', 'label' => 'Siswa'),
+        array('berkas' => 'buku.php', 'jalur' => '/perpustakaan/buku.php', 'label' => 'Buku'),
+        array('berkas' => 'pinjam.php', 'jalur' => '/perpustakaan/pinjam.php', 'label' => 'Peminjaman'),
+        array('berkas' => 'laporan_tersedia.php', 'jalur' => '/perpustakaan/laporan_tersedia.php', 'label' => 'Buku Tersedia'),
+        array('berkas' => 'laporan_belum_kembali.php', 'jalur' => '/perpustakaan/laporan_belum_kembali.php', 'label' => 'Belum Kembali'),
+        array('berkas' => 'laporan_rekap.php', 'jalur' => '/perpustakaan/laporan_rekap.php', 'label' => 'Rekap'),
+    );
+
+    echo '<a class="merek" href="' . teksAman($akar . '/index.php') . '">Perpustakaan</a>';
+    echo '<nav class="navigasi">';
+
+    foreach ($menu as $item) {
+        $kelas = '';
+
+        if ($item['berkas'] === $berkasAktif) {
+            $kelas = ' class="aktif"';
+        }
+
+        echo '<a href="' . teksAman($akar . $item['jalur']) . '"' . $kelas . '>' . teksAman($item['label']) . '</a>';
+    }
+
+    echo '</nav>';
+}
+
+/**
  * Cetak awal halaman HTML.
  *
  * @param string $judul Judul di tab browser dan di kepala halaman.
+ * @param string $lebar Lebar lembar isi.
  * @return void
  */
 function mulaiHalaman($judul, $lebar = '40rem')
 {
     $judulAman = htmlspecialchars($judul, ENT_QUOTES, 'UTF-8');
-    $lebarAman = htmlspecialchars($lebar, ENT_QUOTES, 'UTF-8');
+    $kelasLembar = kelasLebarHalaman($lebar);
+    $css = teksAman(ambilAkarAplikasi() . '/css/tampilan.css');
 
     echo '<!DOCTYPE html>';
     echo '<html lang="id">';
@@ -17,32 +111,14 @@ function mulaiHalaman($judul, $lebar = '40rem')
     echo '<meta charset="UTF-8">';
     echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
     echo '<title>' . $judulAman . '</title>';
-    echo '<style>';
-    echo 'body{font-family:Georgia,serif;margin:2rem auto;max-width:' . $lebarAman . ';line-height:1.5;color:#1c1917;}';
-    echo 'a.tombol,button.tombol{display:inline-block;margin:0 0.25rem 0 0;padding:0.15rem 0.5rem;border:1px solid #44403c;background:#fff;color:inherit;font:inherit;text-decoration:none;cursor:pointer;}';
-    echo 'form.berderet{display:inline;}';
-    echo 'form.editor div{margin:0.45rem 0;}';
-    echo 'form.editor .label{display:inline-block;width:8.5rem;}';
-    echo '.pesan{padding:0.6rem 0.8rem;border:1px solid #d6d3d1;margin:0.6rem 0;}';
-    echo '.pesan-gagal{border-color:#b91c1c;}';
-    echo 'h1{font-size:1.6rem;margin-bottom:0.25rem;}';
-    echo 'p.pengantar{margin-top:0;}';
-    echo 'section{margin-top:1.5rem;}';
-    echo 'h2{font-size:1.1rem;margin-bottom:0.4rem;}';
-    echo 'ul{padding-left:1.2rem;}';
-    echo 'li{margin:0.35rem 0;}';
-    echo '.status{padding:0.6rem 0.8rem;border:1px solid #d6d3d1;}';
-    echo '.status-gagal{border-color:#b91c1c;}';
-    echo 'code{font-family:Consolas,monospace;}';
-    echo 'table{border-collapse:collapse;width:100%;margin:0.5rem 0;}';
-    echo 'th,td{border:1px solid #d6d3d1;padding:0.35rem 0.5rem;text-align:left;vertical-align:top;}';
-    echo 'th{background:#f5f5f4;}';
-    echo 'h3{font-size:1rem;margin-bottom:0.3rem;}';
-    echo '</style>';
+    echo '<link rel="stylesheet" href="' . $css . '">';
     echo '</head>';
     echo '<body>';
-    echo '<header><h1>' . $judulAman . '</h1></header>';
-    echo '<main>';
+    echo '<header class="papan"><div class="papan-dalam">';
+    tulisNavigasi();
+    echo '</div></header>';
+    echo '<main class="' . $kelasLembar . '">';
+    echo '<h1>' . $judulAman . '</h1>';
 }
 
 /**
